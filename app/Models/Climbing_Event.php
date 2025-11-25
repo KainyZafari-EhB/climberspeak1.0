@@ -9,6 +9,7 @@ class Climbing_Event extends Model
 {
     use HasFactory;
 
+    protected $table = 'climbing_events';
     protected $fillable = ['title', 'location', 'date', 'description'];
 
     protected $casts = [

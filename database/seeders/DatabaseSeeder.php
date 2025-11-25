@@ -2,24 +2,40 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\NewsItem;
+use App\Models\FaqCategory;
+use App\Models\FaqItem;
+use App\Models\Climbing_Event;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // 1. Create Admin Account with hashing.
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin User',
+            'username' => 'admin',
+            'email' => 'admin@ehb.be',
+            'password' => Hash::make('Password!321'),
+            'is_admin' => true,
         ]);
+
+        // 2. Create 10 Dummy Users
+        User::factory(10)->create();
+
+        // 3. Create 5 News Items
+        NewsItem::factory(5)->create();
+
+        // 4. Create 3 FAQ Categories, each containing 3 Questions (Nested creation)
+        FaqCategory::factory(3)
+            ->has(FaqItem::factory()->count(3), 'items') // 'items' is the relationship name in the Model
+            ->create();
+
+        // 5. Create 5 Climbing Events
+        Climbing_Event::factory(5)->create();
     }
 }
