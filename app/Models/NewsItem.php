@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class NewsItem extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['title', 'image_path', 'content', 'published_at'];
+
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+}
