@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\NewsItem;
 use App\Models\FaqCategory;
 use App\Models\FaqItem;
-use App\Models\Climbing_Event;
+use App\Models\ClimbingEvent;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -36,6 +36,6 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         // 5. Create 5 Climbing Events
-        Climbing_Event::factory(5)->create();
+        ClimbingEvent::factory(5)->create();
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
-use App\Models\Climbing_Event;
+use App\Models\ClimbingEvent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Climbing_Event>
+ * @extends Factory<ClimbingEvent>
  */
 class Climbing_EventFactory extends Factory
 {
