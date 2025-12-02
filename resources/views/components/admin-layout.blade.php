@@ -27,7 +27,8 @@
 
     <div class="p-4 bg-gray-800">
         <div class="text-sm text-gray-400">Logged in as:</div>
-        <div class="font-bold">{{ auth()->user()->name }}</div>
+        {{-- safe access: optional() prevents exception if no user --}}
+        <div class="font-bold">{{ optional(auth()->user())->name ?? 'Guest' }}</div>
     </div>
 </aside>
 
