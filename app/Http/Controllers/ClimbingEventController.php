@@ -49,4 +49,41 @@ class ClimbingEventController extends Controller
 
         return back()->with('status', 'Attendance updated!');
     }
+    // Admin: List Events
+    public function adminIndex()
+    {
+        $events = ClimbingEvent::orderBy('date')->get();
+        return view('admin.events.index', compact('events'));
+    }
+
+    // Admin: Edit Event
+    public function edit(ClimbingEvent $event)
+    {
+        return view('admin.events.edit', compact('event'));
+    }
+
+    // Admin: Update Event
+    public function update(Request $request, ClimbingEvent $event)
+    {
+        $validated = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'date' => 'required|date', // Combined date/time input or just date
+            'time' => 'required', // If separate
+            'description' => 'required',
+        ]);
+
+        $validated['date'] = $validated['date'] . ' ' . $validated['time'];
+        unset($validated['time']);
+
+        $event->update($validated);
+        return redirect()->route('admin.events.index')->with('status', 'Event updated!');
+    }
+
+    // Admin: Delete Event
+    public function destroy(ClimbingEvent $event)
+    {
+        $event->delete();
+        return redirect()->route('admin.events.index')->with('status', 'Event deleted!');
+    }
 }

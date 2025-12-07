@@ -61,10 +61,14 @@ Route::prefix('admin')
         // News Admin Routes
         Route::get('/news', [NewsController::class, 'adminIndex'])->name('news.index');
         Route::resource('news', NewsController::class)->except(['index', 'show']);
-        // We exclude 'show' as well because admins can just view the public page or edit.
-        // If we want a specific admin show page, we can add it, but for now it's not needed.
-    
-        Route::get('/faq/create', [FaqController::class, 'create'])->name('faq.create');
+
+        // FAQ Admin Routes
+        Route::get('/faq', [FaqController::class, 'adminIndex'])->name('faq.index');
+        Route::resource('faq', FaqController::class)->except(['index', 'show']);
+
+        // Events Admin Routes
+        Route::get('/events', [ClimbingEventController::class, 'adminIndex'])->name('events.index');
+        Route::resource('events', ClimbingEventController::class)->except(['index', 'show']);
     });
 
 // THIS LINE CONNECTS THE TWO FILES

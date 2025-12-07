@@ -16,14 +16,23 @@
         </div>
 
         <nav class="flex-grow p-4 space-y-2">
-            <a href="{{ route('dashboard') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
-            <a href="{{ route('admin.news.create') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Add News</a>
-            <a href="{{ route('admin.faq.create') }}" class="block py-2 px-4 rounded hover:bg-gray-700">Add FAQ</a>
+            <a href="{{ route('dashboard') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('dashboard') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Dashboard</a>
 
-            <hr class="border-gray-700 my-4">
+            <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">Content</div>
+            <a href="{{ route('admin.news.index') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.news.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                News</a>
+            <a href="{{ route('admin.events.index') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.events.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                Events</a>
+            <a href="{{ route('admin.faq.index') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.faq.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                FAQ</a>
 
-            <a href="{{ route('home') }}" class="block py-2 px-4 text-gray-400 hover:text-white">
-                &larr; Back to Website
+            <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">System</div>
+            <a href="{{ route('home') }}" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white mt-2">
+                &larr; Back to Home
             </a>
         </nav>
 
