@@ -57,8 +57,13 @@ Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [PageController::class, 'home'])->name('dashboard');
-        Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
-        Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+
+        // News Admin Routes
+        Route::get('/news', [NewsController::class, 'adminIndex'])->name('news.index');
+        Route::resource('news', NewsController::class)->except(['index', 'show']);
+        // We exclude 'show' as well because admins can just view the public page or edit.
+        // If we want a specific admin show page, we can add it, but for now it's not needed.
+    
         Route::get('/faq/create', [FaqController::class, 'create'])->name('faq.create');
     });
 

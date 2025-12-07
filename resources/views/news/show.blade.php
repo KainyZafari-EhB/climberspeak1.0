@@ -1,26 +1,23 @@
-// file: resources/views/news/show.blade.php
-@extends('layouts.app')
-
-@section('content')
-    <div class="max-w-3xl mx-auto p-6 bg-white rounded shadow">
-        <header class="mb-4">
-            <h1 class="text-2xl font-bold text-gray-900">{{ $news->title }}</h1>
-            <p class="text-sm text-gray-500 mt-1">
-                Published: {{ optional($news->created_at)->format('Y-m-d H:i') }}
-                @if(!empty($news->author)) · Author: {{ $news->author }} @endif
+<x-layout>
+    <div class="max-w-3xl mx-auto p-6 bg-white rounded shadow-md mt-6">
+        <header class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">{{ $news->title }}</h1>
+            <p class="text-sm text-gray-500 mt-2">
+                Published: {{ $news->published_at ? $news->published_at->format('M d, Y') : 'Draft' }}
             </p>
         </header>
 
-        @if(!empty($news->image))
-            <img src="{{ $news->image }}" alt="{{ $news->title }}" class="w-full rounded mb-4 object-cover">
+        @if($news->image_path)
+            <img src="{{ $news->image_path }}" alt="{{ $news->title }}"
+                class="w-full rounded-lg mb-6 object-cover shadow-sm">
         @endif
 
-        <article class="prose prose-sm max-w-none text-gray-800">
-            {!! $news->body !!}
+        <article class="prose prose-lg max-w-none text-gray-800 leading-relaxed">
+            {!! nl2br(e($news->content)) !!}
         </article>
 
-        <div class="mt-6">
-            <a href="{{ url()->previous() }}" class="text-indigo-600 hover:underline">← Back</a>
+        <div class="mt-8 border-t pt-6">
+            <a href="{{ route('news.index') }}" class="text-blue-600 hover:underline font-semibold">← Back to News</a>
         </div>
     </div>
-@endsection
+</x-layout>
