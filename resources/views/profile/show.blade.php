@@ -1,57 +1,85 @@
 <x-layout>
-    <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-            <div class="px-4 py-5 sm:px-6 flex items-center">
-                <div class="flex-shrink-0 mr-4">
-                    @if($user->profile_photo_path)
-                        <img class="h-20 w-20 rounded-full object-cover" src="{{ $user->profile_photo_path }}"
-                            alt="{{ $user->name }}">
-                    @else
-                        <div
-                            class="h-20 w-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-2xl font-bold">
-                            {{ substr($user->name, 0, 1) }}
+    <div class="max-w-4xl mx-auto py-8 text-black">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden text-black">
+            <!-- Banner -->
+            <div class="bg-blue-600 h-32"></div>
+
+            <div class="px-6 py-4 -mt-16 relative text-black">
+                <div class="flex items-end justify-between">
+                    <div class="flex items-end">
+                        <!-- Profile Photo -->
+                        <div class="flex-shrink-0 border-4 border-white rounded-full bg-white">
+                            @if($user->profile_photo_path)
+                                <img src="{{ $user->profile_photo_path }}" alt="{{ $user->name }}"
+                                    class="h-32 w-32 rounded-full object-cover">
+                            @else
+                                <div
+                                    class="h-32 w-32 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 text-4xl font-bold">
+                                    {{ substr($user->name, 0, 1) }}
+                                </div>
+                            @endif
                         </div>
-                    @endif
-                </div>
-                <div>
-                    <h3 class="text-2xl leading-6 font-medium text-gray-900">
-                        {{ $user->username ? '@' . $user->username : $user->name }}
-                    </h3>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                        Member since {{ $user->created_at->format('M Y') }}
-                    </p>
+
+                        <!-- Name and Username -->
+                        <div class="ml-4 mb-2">
+                            <h2 class="text-3xl font-bold text-gray-900">{{ $user->name }}</h2>
+                            @if($user->username)
+                                <p class="text-gray-600 font-medium">{{ '@' . $user->username }}</p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- Edit Profile Button -->
+                    <div class="mb-4">
+                        @auth
+                            @if(auth()->id() === $user->id)
+                                <a href="{{ route('profile.edit') }}"
+                                    class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                    Edit Profile
+                                </a>
+                            @endif
+                        @endauth
+                    </div>
                 </div>
             </div>
 
-            <div class="border-t border-gray-200">
-                <dl>
-                    @if($user->username)
-                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">
-                                Full Name
-                            </dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $user->name }}
-                            </dd>
-                        </div>
-                    @endif
+            <!-- Profile Details -->
+            <div class="px-6 py-6 border-t border-gray-200">
+                <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
+
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500">Email</dt>
+                        <dd class="mt-1 text-sm text-gray-900">{{ $user->email }}</dd>
+                    </div>
+
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500">Member Since</dt>
+                        <dd class="mt-1 text-sm text-gray-900">{{ $user->created_at?->format('F j, Y') ?? 'N/A' }}</dd>
+                    </div>
 
                     @if($user->birthday)
-                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">
-                                Birthday
-                            </dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $user->birthday->format('F d, Y') }}
-                            </dd>
+                        <div class="sm:col-span-1">
+                            <dt class="text-sm font-medium text-gray-500">Birthday</dt>
+                            <dd class="mt-1 text-sm text-gray-900">{{ $user->birthday->format('F d, Y') }}</dd>
                         </div>
                     @endif
 
-                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            About
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <div class="sm:col-span-1">
+                        <dt class="text-sm font-medium text-gray-500">Role</dt>
+                        <dd class="mt-1 text-sm text-gray-900">
+                            @if($user->is_admin)
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Admin</span>
+                            @else
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">User</span>
+                            @endif
+                        </dd>
+                    </div>
+
+                    <div class="sm:col-span-2">
+                        <dt class="text-sm font-medium text-gray-500">About Me</dt>
+                        <dd class="mt-1 text-sm text-gray-900 whitespace-pre-line">
                             @if($user->about_me)
                                 {{ $user->about_me }}
                             @else
@@ -61,15 +89,6 @@
                     </div>
                 </dl>
             </div>
-        </div>
-
-        <div class="mt-6 text-center">
-            @auth
-                @if(auth()->id() === $user->id)
-                    <a href="{{ route('profile.edit') }}" class="text-indigo-600 hover:text-indigo-900 font-bold">Edit My
-                        Profile</a>
-                @endif
-            @endauth
         </div>
     </div>
 </x-layout>
