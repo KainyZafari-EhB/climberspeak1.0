@@ -43,6 +43,10 @@
                 + Add Question
             </a>
 
+            <a href="{{ route('admin.users.index') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.users.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                Users</a>
+
             <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">System</div>
             <a href="{{ route('home') }}" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white mt-2">
                 &larr; Back to Home

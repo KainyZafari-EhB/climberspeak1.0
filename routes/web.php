@@ -73,6 +73,9 @@ Route::prefix('admin')
         Route::get('/events/{event}/edit', [ClimbingEventController::class, 'edit'])->name('events.edit');
         Route::put('/events/{event}', [ClimbingEventController::class, 'update'])->name('events.update');
         Route::delete('/events/{event}', [ClimbingEventController::class, 'destroy'])->name('events.destroy');
+
+        // User Management Routes
+        Route::resource('users', \App\Http\Controllers\AdminUserController::class);
     });
 
 // THIS LINE CONNECTS THE TWO FILES
