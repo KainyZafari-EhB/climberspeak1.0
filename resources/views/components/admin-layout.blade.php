@@ -21,14 +21,26 @@
 
             <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">Content</div>
             <a href="{{ route('admin.news.index') }}"
-                class="block py-2 px-4 rounded {{ request()->routeIs('admin.news.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.news.index') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
                 News</a>
+            <a href="{{ route('admin.news.create') }}"
+                class="block py-1 px-4 text-sm text-gray-400 hover:text-white pl-8 hover:bg-gray-800 rounded">
+                + Add Article
+            </a>
             <a href="{{ route('admin.events.index') }}"
-                class="block py-2 px-4 rounded {{ request()->routeIs('admin.events.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.events.index') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
                 Events</a>
+            <a href="{{ route('admin.events.create') }}"
+                class="block py-1 px-4 text-sm text-gray-400 hover:text-white pl-8 hover:bg-gray-800 rounded">
+                + Add Event
+            </a>
             <a href="{{ route('admin.faq.index') }}"
-                class="block py-2 px-4 rounded {{ request()->routeIs('admin.faq.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.faq.index') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
                 FAQ</a>
+            <a href="{{ route('admin.faq.create') }}"
+                class="block py-1 px-4 text-sm text-gray-400 hover:text-white pl-8 hover:bg-gray-800 rounded">
+                + Add Question
+            </a>
 
             <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">System</div>
             <a href="{{ route('home') }}" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white mt-2">

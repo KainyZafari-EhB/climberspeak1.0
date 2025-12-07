@@ -68,7 +68,11 @@ Route::prefix('admin')
 
         // Events Admin Routes
         Route::get('/events', [ClimbingEventController::class, 'adminIndex'])->name('events.index');
-        Route::resource('events', ClimbingEventController::class)->except(['index', 'show']);
+        Route::get('/events/create', [ClimbingEventController::class, 'adminCreate'])->name('events.create');
+        Route::post('/events', [ClimbingEventController::class, 'adminStore'])->name('events.store');
+        Route::get('/events/{event}/edit', [ClimbingEventController::class, 'edit'])->name('events.edit');
+        Route::put('/events/{event}', [ClimbingEventController::class, 'update'])->name('events.update');
+        Route::delete('/events/{event}', [ClimbingEventController::class, 'destroy'])->name('events.destroy');
     });
 
 // THIS LINE CONNECTS THE TWO FILES

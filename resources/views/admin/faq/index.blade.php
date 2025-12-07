@@ -4,8 +4,8 @@
             <div class="flex justify-between mb-6">
                 <h3 class="text-lg font-bold">Manage FAQs</h3>
                 <a href="{{ route('admin.faq.create') }}"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Add Question
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+                    <span class="mr-1 text-xl leading-none">+</span> Add Question
                 </a>
             </div>
 

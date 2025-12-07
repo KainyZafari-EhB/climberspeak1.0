@@ -3,9 +3,9 @@
         <div class="p-6 text-gray-900">
             <div class="flex justify-between mb-6">
                 <h3 class="text-lg font-bold">Manage Events</h3>
-                <a href="{{ route('events.create') }}"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Add Event
+                <a href="{{ route('admin.events.create') }}"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center">
+                    <span class="mr-1 text-xl leading-none">+</span> Add Event
                 </a>
             </div>
 

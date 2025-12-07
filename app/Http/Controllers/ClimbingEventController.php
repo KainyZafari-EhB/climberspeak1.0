@@ -56,6 +56,30 @@ class ClimbingEventController extends Controller
         return view('admin.events.index', compact('events'));
     }
 
+    // Admin: Create Event Form
+    public function adminCreate()
+    {
+        return view('admin.events.create');
+    }
+
+    // Admin: Store Event
+    public function adminStore(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required',
+            'location' => 'required',
+            'date' => 'required|date',
+            'time' => 'required',
+            'description' => 'required',
+        ]);
+
+        $validated['date'] = $validated['date'] . ' ' . $validated['time'];
+        unset($validated['time']);
+
+        ClimbingEvent::create($validated);
+        return redirect()->route('admin.events.index')->with('status', 'Event created!');
+    }
+
     // Admin: Edit Event
     public function edit(ClimbingEvent $event)
     {
