@@ -1,77 +1,65 @@
-{{-- resources/views/pages/about.blade.php --}}
-@php
-    $appName = $appName ?? config('app.name', 'Application');
-    $team = $team ?? [
-        (object)['name' => 'Alice Example', 'role' => 'Founder', 'avatar' => null],
-        (object)['name' => 'Bob Example', 'role' => 'Lead Developer', 'avatar' => null],
-    ];
-@endphp
-
-<div class="max-w-5xl mx-auto px-4 py-12">
-    <header class="text-center mb-10">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-2">About {{ $appName }}</h1>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-            Built to make work simpler and more enjoyable. Learn who we are, what we stand for and how to get in touch.
-        </p>
-    </header>
-
-    <section class="bg-white shadow rounded-lg p-6 mb-6">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-3">Our mission</h2>
-        <p class="text-gray-700 leading-relaxed">
-            We aim to deliver reliable, maintainable software that helps teams focus on what matters.
-            We value clarity, collaboration and continuous improvement.
-        </p>
-    </section>
-
-    <section class="grid md:grid-cols-2 gap-6 mb-6">
-        <div class="bg-white shadow rounded-lg p-6">
-            <h3 class="text-xl font-medium text-gray-800 mb-2">What we value</h3>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li>Developer ergonomics and good DX</li>
-                <li>Readable, tested code</li>
-                <li>User-centered design and accessibility</li>
-            </ul>
-        </div>
-
-        <div class="bg-white shadow rounded-lg p-6">
-            <h3 class="text-xl font-medium text-gray-800 mb-2">How we work</h3>
-            <p class="text-gray-700">
-                Small cross-functional teams, short feedback loops and automated tests drive our process.
-                We prefer orthogonal, well-documented solutions over complex optimizations.
+<x-layout>
+    <div class="max-w-5xl mx-auto px-4 py-12">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-2">About ClimbConnect</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Your gateway to the local climbing community. Connect, climb, and conquer new heights together.
             </p>
-        </div>
-    </section>
+        </header>
 
-    <section class="mb-6">
-        <div class="flex items-center justify-between mb-4">
-            <h3 class="text-2xl font-semibold text-gray-800">Team</h3>
-            <a href="{{ \Illuminate\Support\Facades\Route::has('contact') ? route('contact') : url('/contact') }}"
-               class="text-sm px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-                Contact us
-            </a>
-        </div>
+        <section class="bg-white shadow-lg rounded-lg p-8 mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Community</h2>
+            <p class="text-gray-700 leading-relaxed text-lg mb-4">
+                ClimbConnect is more than just a website; it's a vibrant community of climbers passionate about the
+                sport.
+                Whether you're a seasoned boulderer, a sport climbing enthusiast, or just starting your journey on the
+                wall,
+                you'll find a welcoming home here.
+            </p>
+            <p class="text-gray-700 leading-relaxed text-lg">
+                We believe that climbing is best enjoyed together. Our platform is designed to bridge the gap between
+                solo sessions
+                and lifelong climbing partnerships.
+            </p>
+        </section>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach($team as $member)
-                <div class="bg-white shadow rounded-lg p-4 flex items-center space-x-4">
-                    @if(!empty($member->avatar))
-                        <img src="{{ $member->avatar }}" alt="{{ $member->name }}" class="w-12 h-12 rounded-full object-cover">
-                    @else
-                        <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
-                            {{ strtoupper(substr($member->name ?? 'U', 0, 1)) }}
-                        </div>
-                    @endif
+        <section class="grid md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition duration-300">
+                <div class="text-blue-600 text-4xl mb-4">🤝</div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Find Partners</h3>
+                <p class="text-gray-600">
+                    Struggling to find a belay partner? Our community features make it easy to connect with other
+                    climbers
+                    at your skill level and in your area. Never miss a session again!
+                </p>
+            </div>
 
-                    <div>
-                        <div class="font-medium text-gray-800">{{ $member->name }}</div>
-                        <div class="text-sm text-gray-600">{{ $member->role ?? 'Team member' }}</div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
+            <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition duration-300">
+                <div class="text-blue-600 text-4xl mb-4">🧗‍♂️</div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Share Beta</h3>
+                <p class="text-gray-600">
+                    Stuck on a project? Share tips, beta, and encouragement. Our forums and event meetups are the
+                    perfect
+                    place to learn from others and improve your technique.
+                </p>
+            </div>
+        </section>
 
-    <footer class="text-center text-sm text-gray-500 mt-8">
-        <div>© {{ date('Y') }} {{ $appName }}. All rights reserved.</div>
-    </footer>
-</div>
+        <section class="bg-blue-600 rounded-lg p-8 text-white text-center shadow-lg">
+            <h2 class="text-2xl font-bold mb-4">Ready to Join the Community?</h2>
+            <p class="mb-6 text-blue-100">
+                Sign up today to start connecting with climbers near you and join our upcoming events.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="{{ route('register') }}"
+                    class="bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition shadow-md">
+                    Join Now
+                </a>
+                <a href="{{ route('contact') }}"
+                    class="bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-600 transition">
+                    Contact Us
+                </a>
+            </div>
+        </section>
+    </div>
+</x-layout>
