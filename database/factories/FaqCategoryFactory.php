@@ -17,8 +17,16 @@ class FaqCategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $categories = [
+            'General Information',
+            'Safety & Rules',
+            'Events & Competitions',
+            'Membership & Pricing',
+            'Training Classes',
+        ];
+
         return [
-            'name' => fake()->words(2, true) . ' Help',
+            'name' => fake()->randomElement($categories),
         ];
     }
 }
