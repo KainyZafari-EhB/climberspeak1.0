@@ -14,8 +14,9 @@ class NewsController extends Controller
     }
 
     // Public: Show one item
-    public function show(NewsItem $newsItem) {
-        return view('news.show', compact('newsItem'));
+    public function show(NewsItem $newsItem)
+    {
+        return view('news.show', ['news' => $newsItem]);
     }
 
     // Admin: Show create form
