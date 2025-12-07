@@ -22,6 +22,7 @@ Route::get('/news/{newsItem}', [NewsController::class, 'show'])->name('news.show
 Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 Route::get('/events', [ClimbingEventController::class, 'index'])->name('events.index');
 
+
 /*
 |--------------------------------------------------------------------------
 | Authenticated User Routes
@@ -44,6 +45,8 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::post('/events/{event}/join', [ClimbingEventController::class, 'join'])->name('events.join');
 }); // <-- closing the auth group
 
+Route::get('/events/{event}', [ClimbingEventController::class, 'show'])->name('events.show');
+
 /*
 |--------------------------------------------------------------------------
 | Admin Routes
@@ -60,4 +63,4 @@ Route::prefix('admin')
     });
 
 // THIS LINE CONNECTS THE TWO FILES
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
