@@ -30,7 +30,7 @@ Route::get('/events', [ClimbingEventController::class, 'index'])->name('events.i
 */
 Route::middleware(['web', 'auth'])->group(function () {
     // Dashboard (authenticated)
-    Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
 
     // Profile
     Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');
@@ -56,8 +56,8 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin'])
     ->group(function () {
-        Route::get('/', [PageController::class, 'home'])->name('dashboard');
-
+        Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('index'); // /admin -> admin.index
+    
         // News Admin Routes
         Route::get('/news', [NewsController::class, 'adminIndex'])->name('news.index');
         Route::resource('news', NewsController::class)->except(['index', 'show']);
