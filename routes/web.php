@@ -33,7 +33,6 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
 
     // Profile
-    Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile', [ProfileController::class, 'update']); // optional
@@ -47,6 +46,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 
 Route::get('/events/{event}', [ClimbingEventController::class, 'show'])->name('events.show');
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+Route::get('/search', [PageController::class, 'search'])->name('search');
 
 /*
 |--------------------------------------------------------------------------

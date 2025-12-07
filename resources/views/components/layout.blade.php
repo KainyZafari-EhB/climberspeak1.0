@@ -23,9 +23,16 @@
                 <a href="{{ route('contact') }}" class="hover:text-blue-200">Contact</a>
             </div>
 
-            <div class="space-x-4">
+            <div class="flex items-center space-x-4">
+                <form action="{{ route('search') }}" method="GET" class="hidden md:flex items-center">
+                    <input type="text" name="query" placeholder="Search users..."
+                        class="px-3 py-1 rounded-l-md border-0 text-gray-900 focus:ring-2 focus:ring-blue-300">
+                    <button type="submit" class="bg-blue-700 px-3 py-1 rounded-r-md hover:bg-blue-800">🔍</button>
+                </form>
+
                 @auth
-                    <a href="{{ route('profile.show') }}" class="font-semibold">{{ auth()->user()->username }}</a>
+                    <a href="{{ route('profile.show', auth()->user()) }}"
+                        class="font-semibold">{{ auth()->user()->username ?? auth()->user()->name }}</a>
 
                     @if(auth()->user()->is_admin)
                         <a href="{{ route('dashboard') }}" class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm">Admin

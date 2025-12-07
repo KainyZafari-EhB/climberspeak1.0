@@ -3,12 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PageController extends Controller
 {
     public function home()
     {
         return view('pages.home');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $users = collect();
+
+        if ($query) {
+            $users = User::where('name', 'like', "%{$query}%")
+                ->orWhere('username', 'like', "%{$query}%")
+                ->get();
+        }
+
+        return view('pages.search', compact('users', 'query'));
     }
 
     public function about()
