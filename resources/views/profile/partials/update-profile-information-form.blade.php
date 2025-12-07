@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -23,6 +23,15 @@
                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
                 value="{{ old('name', $user->name) }}" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+
+        <div>
+            <label for="username"
+                class="block font-medium text-sm text-gray-700">{{ __('Username (Optional)') }}</label>
+            <input id="username" name="username" type="text"
+                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+                value="{{ old('username', $user->username) }}" />
+            <x-input-error class="mt-2" :messages="$errors->get('username')" />
         </div>
 
         <div>
@@ -50,6 +59,40 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label for="birthday" class="block font-medium text-sm text-gray-700">{{ __('Birthday') }}</label>
+                <input id="birthday" name="birthday" type="date"
+                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+                    value="{{ old('birthday', $user->birthday ? $user->birthday->format('Y-m-d') : '') }}" />
+                <x-input-error class="mt-2" :messages="$errors->get('birthday')" />
+            </div>
+
+            <div>
+                <label for="avatar" class="block font-medium text-sm text-gray-700">{{ __('Profile Photo') }}</label>
+                @if($user->profile_photo_path)
+                    <div class="mt-2 mb-2">
+                        <img src="{{ $user->profile_photo_path }}" alt="Current Photo"
+                            class="w-16 h-16 rounded-full object-cover">
+                    </div>
+                @endif
+                <input id="avatar" name="avatar" type="file" class="mt-1 block w-full text-sm text-gray-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-blue-50 file:text-blue-700
+                    hover:file:bg-blue-100" />
+                <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
+            </div>
+        </div>
+
+        <div>
+            <label for="about_me" class="block font-medium text-sm text-gray-700">{{ __('About Me') }}</label>
+            <textarea id="about_me" name="about_me" rows="4"
+                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full">{{ old('about_me', $user->about_me) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('about_me')" />
         </div>
 
         <div class="flex items-center gap-4">

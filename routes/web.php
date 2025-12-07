@@ -46,6 +46,7 @@ Route::middleware(['web', 'auth'])->group(function () {
 }); // <-- closing the auth group
 
 Route::get('/events/{event}', [ClimbingEventController::class, 'show'])->name('events.show');
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
 /*
 |--------------------------------------------------------------------------

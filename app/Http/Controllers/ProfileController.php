@@ -26,13 +26,23 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $validated = $request->validated();
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user->fill($validated);
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        if ($request->hasFile('avatar')) {
+            // Delete old photo if exists (optional cleanup)
+            // Store new photo
+            $path = $request->file('avatar')->store('profile-photos', 'public');
+            $user->profile_photo_path = '/storage/' . $path;
+        }
+
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -58,10 +68,8 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function show(Request $request)
+    public function show(\App\Models\User $user)
     {
-        $user = $request->user() ?? auth()->user();
-
-        return view('profile.partials.show', ['user' => $user]);
+        return view('profile.show', compact('user'));
     }
 }
