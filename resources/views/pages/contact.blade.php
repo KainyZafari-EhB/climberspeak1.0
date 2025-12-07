@@ -74,38 +74,27 @@
             </div>
 
             <!-- Contact Info -->
-            <div class="space-y-8">
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h2 class="text-2xl font-semibold mb-6 text-gray-800">Get in Touch</h2>
-                    <div class="space-y-4 text-gray-600">
-                        <p class="flex items-start">
-                            <span class="text-blue-600 mr-3 text-xl">📍</span>
-                            <span>
+            <div class="h-full">
+                <div class="bg-white p-8 rounded-lg shadow-lg h-full flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b pb-4">Get in Touch</h2>
+                    <div class="space-y-8 text-gray-700">
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg transition hover:bg-blue-50 hover:shadow-md">
+                            <span class="text-blue-600 mr-4 text-3xl">📍</span>
+                            <span class="text-lg">
                                 <strong>ClimbConnect HQ</strong><br>
                                 123 Boulder Boulevard<br>
                                 Peak City, 1500 Belgium
                             </span>
-                        </p>
-                        <p class="flex items-center">
-                            <span class="text-blue-600 mr-3 text-xl">📧</span>
-                            <a href="mailto:info@climberspeak.com" class="hover:text-blue-600">info@climberspeak.com</a>
-                        </p>
-                        <p class="flex items-center">
-                            <span class="text-blue-600 mr-3 text-xl">📞</span>
-                            <a href="tel:+15550192834" class="hover:text-blue-600">+32 491 23 54 69</a>
-                        </p>
+                        </div>
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg transition hover:bg-blue-50 hover:shadow-md">
+                            <span class="text-blue-600 mr-4 text-3xl">📧</span>
+                            <a href="mailto:info@climberspeak.com" class="text-lg hover:text-blue-700 font-medium">info@climberspeak.com</a>
+                        </div>
+                        <div class="flex items-center p-4 bg-gray-50 rounded-lg transition hover:bg-blue-50 hover:shadow-md">
+                            <span class="text-blue-600 mr-4 text-3xl">📞</span>
+                            <a href="tel:+15550192834" class="text-lg hover:text-blue-700 font-medium">+32 491 23 54 69</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="bg-blue-600 p-8 rounded-lg shadow-lg text-white">
-                    <h3 class="text-xl font-bold mb-4">Join the Community</h3>
-                    <p class="mb-6 text-blue-100">
-                        Stay updated with the latest events and news. Sign up for an account today!
-                    </p>
-                    <a href="{{ route('register') }}"
-                        class="inline-block bg-white text-blue-600 font-bold py-2 px-6 rounded-full hover:bg-gray-100 transition">
-                        Register Now
-                    </a>
                 </div>
             </div>
         </div>
