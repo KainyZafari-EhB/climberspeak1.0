@@ -37,7 +37,7 @@
             <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition duration-300">
                 <div class="text-blue-600 text-4xl mb-4">🧗‍♂️</div>
                 <h3 class="text-xl font-bold text-gray-800 mb-2">Share Beta</h3>
-                <p class="text-gray-600">
+      1`          <p class="text-gray-600">
                     Stuck on a project? Share tips, beta, and encouragement. Our forums and event meetups are the
                     perfect
                     place to learn from others and improve your technique.
