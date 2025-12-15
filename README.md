@@ -97,7 +97,7 @@ Follow these steps to get a local copy running on your machine.
     ```
 
 5.  **Database Setup (SQLite)**
-    By default, this project is configured for **SQLite**. You need to create the database file manually if it doesn't represent:
+    By default, this project is configured for **SQLite**. You need to create the database file manually if it doesn't exist:
     
     *Windows (PowerShell):*
     ```powershell
