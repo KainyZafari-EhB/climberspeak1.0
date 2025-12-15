@@ -42,9 +42,17 @@ Route::middleware(['web', 'auth'])->group(function () {
     Route::get('/events/create', [ClimbingEventController::class, 'create'])->name('events.create');
     Route::post('/events', [ClimbingEventController::class, 'store'])->name('events.store');
     Route::post('/events/{event}/join', [ClimbingEventController::class, 'join'])->name('events.join');
+
+    // Forum (authenticated)
+    Route::get('/forum/create', [\App\Http\Controllers\ForumController::class, 'create'])->name('forum.create');
+    Route::post('/forum', [\App\Http\Controllers\ForumController::class, 'store'])->name('forum.store');
+    Route::post('/forum/{post}/comments', [\App\Http\Controllers\ForumCommentController::class, 'store'])->name('forum.comments.store');
 }); // <-- closing the auth group
 
 Route::get('/events/{event}', [ClimbingEventController::class, 'show'])->name('events.show');
+// Forum (public)
+Route::get('/forum', [\App\Http\Controllers\ForumController::class, 'index'])->name('forum.index');
+Route::get('/forum/{id}', [\App\Http\Controllers\ForumController::class, 'show'])->where('id', '[0-9]+')->name('forum.show');
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/search', [PageController::class, 'search'])->name('search');
 

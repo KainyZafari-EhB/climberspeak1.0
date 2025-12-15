@@ -37,5 +37,10 @@ class DatabaseSeeder extends Seeder
 
         // 5. Create 5 Climbing Events
         ClimbingEvent::factory(5)->create();
+
+        // 6. Create 15 Forum Posts with 3-8 comments each
+        \App\Models\ForumPost::factory(15)
+            ->has(\App\Models\ForumComment::factory()->count(rand(3, 8)), 'comments')
+            ->create();
     }
 }

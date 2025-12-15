@@ -26,6 +26,7 @@
 
             <div class="space-x-8 hidden md:flex font-medium text-slate-600">
                 <a href="{{ route('news.index') }}" class="hover:text-primary-600 transition-colors">News</a>
+                <a href="{{ route('forum.index') }}" class="hover:text-primary-600 transition-colors">Forum</a>
                 <a href="{{ route('events.index') }}" class="hover:text-primary-600 transition-colors">Events</a>
                 <a href="{{ route('faq.index') }}" class="hover:text-primary-600 transition-colors">FAQ</a>
                 <a href="{{ route('contact') }}" class="hover:text-primary-600 transition-colors">Contact</a>
@@ -51,7 +52,7 @@
                             class="font-semibold text-slate-700 hover:text-primary-600 transition-colors">{{ auth()->user()->username ?? auth()->user()->name }}</a>
 
                         @if(auth()->user()->is_admin)
-                            <a href="{{ route('dashboard') }}"
+                            <a href="{{ route('admin.dashboard') }}"
                                 class="bg-red-500/10 text-red-600 hover:bg-red-500 hover:text-white px-3 py-1 rounded-full text-xs font-bold transition-all border border-red-500/20">Admin</a>
                         @endif
 

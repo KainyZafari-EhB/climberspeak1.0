@@ -31,7 +31,7 @@
     </div>
 
     <!-- Feature Cards -->
-    <div class="grid md:grid-cols-3 gap-8 mt-12 relative z-10">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 relative z-10 w-full">
         <a href="{{ route('about') }}"
             class="group glass p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-900/5 block border border-slate-100/50">
             <div
@@ -40,8 +40,18 @@
             </div>
             <h3 class="font-bold text-2xl mb-3 text-slate-900 group-hover:text-primary-600 transition-colors">Community
             </h3>
-            <p class="text-slate-500 leading-relaxed">Connect with climbers in your area. find partners for your next
-                session.</p>
+            <p class="text-slate-500 leading-relaxed">Connect with climbers in your area.</p>
+        </a>
+
+        <a href="{{ route('forum.index') }}"
+            class="group glass p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary-900/5 block border border-slate-100/50">
+            <div
+                class="bg-orange-50 w-14 h-14 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                💬
+            </div>
+            <h3 class="font-bold text-2xl mb-3 text-slate-900 group-hover:text-primary-600 transition-colors">Forum
+            </h3>
+            <p class="text-slate-500 leading-relaxed">Share tips, ask questions, and discuss beta.</p>
         </a>
 
         <a href="{{ route('events.index') }}"
@@ -52,8 +62,7 @@
             </div>
             <h3 class="font-bold text-2xl mb-3 text-slate-900 group-hover:text-primary-600 transition-colors">Events
             </h3>
-            <p class="text-slate-500 leading-relaxed">Join local climbing sessions, competitions, and casual meetups.
-            </p>
+            <p class="text-slate-500 leading-relaxed">Join local climbing sessions.</p>
         </a>
 
         <a href="{{ route('news.index') }}"
@@ -63,8 +72,7 @@
                 📰
             </div>
             <h3 class="font-bold text-2xl mb-3 text-slate-900 group-hover:text-primary-600 transition-colors">News</h3>
-            <p class="text-slate-500 leading-relaxed">Stay updated with the latest climbing news, tips, and community
-                stories.</p>
+            <p class="text-slate-500 leading-relaxed">Stay updated with the latest news.</p>
         </a>
     </div>
 </x-layout>
