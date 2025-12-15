@@ -46,6 +46,7 @@ Route::middleware(['web', 'auth'])->group(function () {
     // Forum (authenticated)
     Route::get('/forum/create', [\App\Http\Controllers\ForumController::class, 'create'])->name('forum.create');
     Route::post('/forum', [\App\Http\Controllers\ForumController::class, 'store'])->name('forum.store');
+    Route::delete('/forum/{post}', [\App\Http\Controllers\ForumController::class, 'destroy'])->name('forum.destroy');
     Route::post('/forum/{post}/comments', [\App\Http\Controllers\ForumCommentController::class, 'store'])->name('forum.comments.store');
 }); // <-- closing the auth group
 

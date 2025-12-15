@@ -17,8 +17,8 @@
         </div>
 
         <nav class="flex-grow p-4 space-y-2">
-            <a href="{{ route('dashboard') }}"
-                class="block py-2 px-4 rounded {{ request()->routeIs('dashboard') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Dashboard</a>
+            <a href="{{ route('admin.dashboard') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.dashboard') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Dashboard</a>
 
             <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">Content</div>
             <a href="{{ route('admin.news.index') }}"
