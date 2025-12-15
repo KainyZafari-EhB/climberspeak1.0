@@ -8,6 +8,7 @@
 
 ### 🧗 Community Hub
 Stay in the loop with what's happening in your local scene.
+-   **Forum & Discussions**: A space for climbers to share tips, ask questions, and comment on threads.
 -   **News Feed**: Curated articles on local send reports, gym openings, and gear reviews.
 -   **Announcements**: Critical updates on crag access, closures, and community meetings.
 
@@ -26,6 +27,7 @@ Build your climbing identity.
 ### 🛠️ Admin Dashboard
 *For site administrators only.*
 -   **Content Management**: Create, edit, and delete News articles and FAQ items.
+-   **Forum Moderation**: Manage discussions and comments to keep the community safe.
 -   **Event Oversight**: Moderate user-created events.
 -   **User Management**: View and manage registered users.
 
