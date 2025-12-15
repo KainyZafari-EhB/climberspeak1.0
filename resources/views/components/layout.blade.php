@@ -53,7 +53,7 @@
 
                         @if(auth()->user()->is_admin)
                             <a href="{{ route('admin.dashboard') }}"
-                                class="bg-red-500/10 text-red-600 hover:bg-red-500 hover:text-white px-3 py-1 rounded-full text-xs font-bold transition-all border border-red-500/20">Admin</a>
+                                class="bg-red-500/10 text-red-600 hover:bg-red-500 hover:text-white px-3 py-1 rounded-full text-xs font-bold transition-all border border-red-500/20">Dashboard</a>
                         @endif
 
                         <form method="POST" action="{{ route('logout') }}" class="inline">
