@@ -29,8 +29,8 @@ Route::get('/events', [ClimbingEventController::class, 'index'])->name('events.i
 |--------------------------------------------------------------------------
 */
 Route::middleware(['web', 'auth'])->group(function () {
-    // Dashboard (authenticated)
-    Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    // Dashboard (authenticated) - MOVED TO ADMIN GROUP
+
 
     // Profile
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -58,6 +58,7 @@ Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('index'); // /admin -> admin.index
+        Route::get('/dashboard', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboard'); // /admin/dashboard (also protected)
     
         // News Admin Routes
         Route::get('/news', [NewsController::class, 'adminIndex'])->name('news.index');
