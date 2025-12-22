@@ -107,11 +107,6 @@
             <h4 class="text-primary-400 font-bold text-xl mb-4">🧗 ClimbConnect</h4>
             <p class="mb-8 max-w-md mx-auto text-earth-400">Connecting climbers worldwide. Join the community and reach
                 new heights together.</p>
-            <div class="flex justify-center gap-6 mb-8">
-                <a href="#" class="hover:text-primary-400 transition-colors">Instagram</a>
-                <a href="#" class="hover:text-primary-400 transition-colors">Twitter</a>
-                <a href="#" class="hover:text-primary-400 transition-colors">Facebook</a>
-            </div>
             <p class="text-sm border-t border-earth-800 pt-8">&copy; {{ date('Y') }} ClimbConnect - Built with ❤️ for
                 climbers.</p>
         </div>
