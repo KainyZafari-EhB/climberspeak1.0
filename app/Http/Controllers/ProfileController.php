@@ -36,10 +36,12 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('avatar')) {
-            // Delete old photo if exists (optional cleanup)
-            // Store new photo
-            $path = $request->file('avatar')->store('profile-photos', 'public');
-            $user->profile_photo_path = '/storage/' . $path;
+            $file = $request->file('avatar');
+            $mimeType = $file->getMimeType();
+            $base64 = base64_encode(file_get_contents($file->getRealPath()));
+            $user->profile_photo_base64 = 'data:' . $mimeType . ';base64,' . $base64;
+            // Clear old path-based photo if any
+            $user->profile_photo_path = null;
         }
 
         $user->save();

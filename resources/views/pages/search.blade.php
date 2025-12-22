@@ -11,8 +11,8 @@
                 @foreach($users as $user)
                     <div class="glass-climbing overflow-hidden rounded-xl flex items-center p-6 space-x-4">
                         <div class="flex-shrink-0">
-                            @if($user->profile_photo_path)
-                                <img class="h-16 w-16 rounded-full object-cover" src="{{ $user->profile_photo_path }}" alt="{{ $user->name }}">
+                            @if($user->profile_photo)
+                                <img class="h-16 w-16 rounded-full object-cover" src="{{ $user->profile_photo }}" alt="{{ $user->name }}">
                             @else
                                 <div class="h-16 w-16 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-xl font-bold">
                                     {{ substr($user->name, 0, 1) }}

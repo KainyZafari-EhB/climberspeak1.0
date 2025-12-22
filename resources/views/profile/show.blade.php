@@ -19,8 +19,8 @@
                 <div class="relative group">
                     <div
                         class="w-32 h-32 md:w-40 md:h-40 rounded-full border-[6px] border-white/80 shadow-2xl overflow-hidden bg-white">
-                        @if($user->profile_photo_path)
-                            <img src="{{ $user->profile_photo_path }}" alt="{{ $user->name }}"
+                        @if($user->profile_photo)
+                            <img src="{{ $user->profile_photo }}" alt="{{ $user->name }}"
                                 class="w-full h-full object-cover">
                         @else
                             <div

@@ -72,9 +72,9 @@
 
             <div>
                 <label for="avatar" class="block font-medium text-sm text-gray-700">{{ __('Profile Photo') }}</label>
-                @if($user->profile_photo_path)
+                @if($user->profile_photo)
                     <div class="mt-2 mb-2">
-                        <img src="{{ $user->profile_photo_path }}" alt="Current Photo"
+                        <img src="{{ $user->profile_photo }}" alt="Current Photo"
                             class="w-16 h-16 rounded-full object-cover">
                     </div>
                 @endif

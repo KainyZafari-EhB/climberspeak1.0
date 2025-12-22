@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'birthday',
         'profile_photo_path',
+        'profile_photo_base64',
         'about_me',
         'is_admin',
     ];
@@ -36,6 +37,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'profile_photo_base64', // Hide from JSON serialization (large data)
     ];
 
     /**
@@ -51,5 +53,14 @@ class User extends Authenticatable
             'isAdmin' => 'boolean',
             'birthday' => 'date',
         ];
+    }
+
+    /**
+     * Get the user's profile photo (base64 or path).
+     * Prioritizes base64, falls back to path for backwards compatibility.
+     */
+    public function getProfilePhotoAttribute(): ?string
+    {
+        return $this->profile_photo_base64 ?? $this->profile_photo_path;
     }
 }
