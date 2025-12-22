@@ -18,6 +18,16 @@
                 </div>
 
                 <div class="mb-4">
+                    <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                    <input type="text" name="username" id="username"
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        value="{{ old('username', $user->username) }}" required>
+                    @error('username')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-4">
                     <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                     <input type="email" name="email" id="email"
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
