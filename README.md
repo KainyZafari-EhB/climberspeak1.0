@@ -137,3 +137,33 @@ climberspeak1.0/
 ```
 
 ---
+
+##  Sources
+
+### Technical Documentation
+
+| Technology | Documentation |
+|------------|---------------|
+| **Laravel 11** | [laravel.com/docs/11.x](https://laravel.com/docs/11.x) |
+| **Laravel Breeze** | [laravel.com/docs/11.x/starter-kits#laravel-breeze](https://laravel.com/docs/11.x/starter-kits#laravel-breeze) |
+| **Tailwind CSS** | [tailwindcss.com/docs](https://tailwindcss.com/docs) |
+| **Alpine.js** | [alpinejs.dev/docs](https://alpinejs.dev/) |
+| **Vite** | [vite.dev/guide](https://vite.dev/guide/) |
+| **PHP 8.2** | [php.net/docs.php](https://www.php.net/docs.php) |
+| **AI** | Gemini 3, Opus 4.5, Claude 3.5|
+
+
+### Images & Assets
+
+All images used in this project were AI-generated using **Google Gemini**:
+
+- **Background Images** (`public/images/backgrounds/`)
+  - `home-bg.png` — Homepage climbing scene
+  - `forum-bg.png` — Forum section background
+  - `events-bg.png` — Events page background
+  - `news-bg.png` — News section background
+
+- **News Article Images** (`public/images/news/`)
+  - `news-1.png` through `news-5.png` — Article thumbnails
+
+---
