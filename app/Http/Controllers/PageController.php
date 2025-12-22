@@ -58,14 +58,14 @@ class PageController extends Controller
             return back()->withErrors(['captcha' => 'Incorrect math answer. Please try again.'])->withInput();
         }
 
-        // Send Email
-        try {
-            \Illuminate\Support\Facades\Mail::to('admin@climberspeak.com')->send(new \App\Mail\ContactFormSubmitted($validated));
-        } catch (\Exception $e) {
-            \Log::error('Mail Error: ' . $e->getMessage());
-            // Continue even if mail fails in dev, but maybe show error? 
-            // For now, we assume it works or logs error.
-        }
+        // Save to database
+        \App\Models\ContactMessage::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'subject' => $validated['subject'],
+            'message' => $validated['message'],
+        ]);
 
         return redirect()->route('contact')->with('status', 'Message sent successfully! We will get back to you soon.');
     }

@@ -87,6 +87,11 @@ Route::prefix('admin')
 
         // User Management Routes
         Route::resource('users', \App\Http\Controllers\AdminUserController::class);
+
+        // Contact Messages Routes
+        Route::get('/contact', [\App\Http\Controllers\AdminContactController::class, 'index'])->name('contact.index');
+        Route::get('/contact/{message}', [\App\Http\Controllers\AdminContactController::class, 'show'])->name('contact.show');
+        Route::delete('/contact/{message}', [\App\Http\Controllers\AdminContactController::class, 'destroy'])->name('contact.destroy');
     });
 
 // THIS LINE CONNECTS THE TWO FILES

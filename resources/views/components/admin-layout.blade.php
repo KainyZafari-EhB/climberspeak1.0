@@ -46,6 +46,14 @@
             <a href="{{ route('admin.users.index') }}"
                 class="block py-2 px-4 rounded {{ request()->routeIs('admin.users.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">Manage
                 Users</a>
+            <a href="{{ route('admin.contact.index') }}"
+                class="block py-2 px-4 rounded {{ request()->routeIs('admin.contact.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">
+                Contact Messages
+                @php $unreadCount = \App\Models\ContactMessage::where('is_read', false)->count(); @endphp
+                @if($unreadCount > 0)
+                    <span class="ml-2 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">{{ $unreadCount }}</span>
+                @endif
+            </a>
 
             <div class="pt-4 pb-2 text-xs text-gray-400 uppercase font-bold">System</div>
             <a href="{{ route('home') }}" class="block py-2 px-4 rounded bg-gray-700 hover:bg-gray-600 text-white mt-2">
