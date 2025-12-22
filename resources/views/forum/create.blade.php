@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout background="forum-bg">
     <div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="mb-8">
             <a href="{{ route('forum.index') }}"

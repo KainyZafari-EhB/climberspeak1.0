@@ -1,3 +1,5 @@
+@props(['background' => null])
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
@@ -11,9 +13,17 @@
 <body
     class="bg-slate-50 text-slate-900 font-sans flex flex-col min-h-screen antialiased selection:bg-primary-500 selection:text-white relative">
 
-    <!-- Background Decor -->
-    <div
-        class="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-100/50 via-slate-50 to-slate-50 pointer-events-none">
+    <!-- Background with optional image -->
+    <div class="fixed inset-0 -z-10">
+        @if($background)
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+                style="background-image: url('/images/backgrounds/{{ $background }}.png')"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/80"></div>
+        @else
+            <div
+                class="bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-100/50 via-slate-50 to-slate-50 h-full">
+            </div>
+        @endif
     </div>
 
     <nav class="fixed w-full z-[100] transition-all duration-300 glass border-b border-slate-200/50">
@@ -21,7 +31,7 @@
             <a href="{{ route('home') }}"
                 class="text-2xl font-bold flex items-center gap-2 tracking-tight hover:scale-105 transition-transform">
                 <span class="text-3xl">🧗</span> <span
-                    class="bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-violet-600">ClimbConnect</span>
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-amber-500">ClimbConnect</span>
             </a>
 
             <div class="space-x-8 hidden md:flex font-medium text-slate-600">
@@ -92,17 +102,17 @@
         {{ $slot }}
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-12 mt-20 border-t border-slate-800">
+    <footer class="bg-earth-900 text-earth-300 py-12 mt-20 border-t border-earth-800">
         <div class="container mx-auto px-6 text-center">
-            <h4 class="text-white font-bold text-xl mb-4">🧗 ClimbConnect</h4>
-            <p class="mb-8 max-w-md mx-auto text-slate-500">Connecting climbers worldwide. Join the community and reach
+            <h4 class="text-primary-400 font-bold text-xl mb-4">🧗 ClimbConnect</h4>
+            <p class="mb-8 max-w-md mx-auto text-earth-400">Connecting climbers worldwide. Join the community and reach
                 new heights together.</p>
             <div class="flex justify-center gap-6 mb-8">
-                <a href="#" class="hover:text-white transition-colors">Instagram</a>
-                <a href="#" class="hover:text-white transition-colors">Twitter</a>
-                <a href="#" class="hover:text-white transition-colors">Facebook</a>
+                <a href="#" class="hover:text-primary-400 transition-colors">Instagram</a>
+                <a href="#" class="hover:text-primary-400 transition-colors">Twitter</a>
+                <a href="#" class="hover:text-primary-400 transition-colors">Facebook</a>
             </div>
-            <p class="text-sm border-t border-slate-800 pt-8">&copy; {{ date('Y') }} ClimbConnect - Built with ❤️ for
+            <p class="text-sm border-t border-earth-800 pt-8">&copy; {{ date('Y') }} ClimbConnect - Built with ❤️ for
                 climbers.</p>
         </div>
     </footer>

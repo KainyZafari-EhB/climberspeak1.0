@@ -1,10 +1,10 @@
-<x-layout>
+<x-layout background="forum-bg">
     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-                The <span class="text-gradient">Climber's Forum</span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4 drop-shadow-lg">
+                The <span class="text-primary-400">Climber's Forum</span>
             </h1>
-            <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p class="text-lg text-white/90 max-w-2xl mx-auto drop-shadow">
                 Share your experiences, ask for beta, and connect with the community.
             </p>
 
@@ -28,7 +28,7 @@
         <div class="grid gap-6">
             @forelse($posts as $post)
                 <a href="{{ route('forum.show', $post->id) }}"
-                    class="glass p-6 rounded-3xl border border-slate-200/50 hover:border-primary-300 transition-all hover:shadow-md group block">
+                    class="glass-climbing p-6 rounded-3xl transition-all hover:shadow-2xl group block">
                     <div class="flex items-start justify-between">
                         <div>
                             <div class="flex items-center gap-2 mb-2">
@@ -75,8 +75,8 @@
                     </div>
                 </a>
             @empty
-                <div class="text-center py-16 bg-white/50 rounded-3xl border border-dashed border-slate-300">
-                    <p class="text-slate-500 text-lg">No discussions yet. Be the first to post!</p>
+                <div class="text-center py-16 glass-climbing rounded-3xl border border-dashed border-white/30">
+                    <p class="text-slate-600 text-lg">No discussions yet. Be the first to post!</p>
                 </div>
             @endforelse
         </div>
