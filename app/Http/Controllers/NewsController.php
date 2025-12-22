@@ -44,10 +44,11 @@ class NewsController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Store in 'storage/app/public/news_images'
-            // Make sure to run 'php artisan storage:link'
-            $path = $request->file('image')->store('news_images', 'public');
-            $validated['image_path'] = '/storage/' . $path;
+            $file = $request->file('image');
+            $mimeType = $file->getMimeType();
+            $base64 = base64_encode(file_get_contents($file->getRealPath()));
+            $validated['image_base64'] = 'data:' . $mimeType . ';base64,' . $base64;
+            $validated['image_path'] = null; // Clear old path
         }
 
         NewsItem::create($validated);
@@ -72,8 +73,11 @@ class NewsController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('news_images', 'public');
-            $validated['image_path'] = '/storage/' . $path;
+            $file = $request->file('image');
+            $mimeType = $file->getMimeType();
+            $base64 = base64_encode(file_get_contents($file->getRealPath()));
+            $validated['image_base64'] = 'data:' . $mimeType . ';base64,' . $base64;
+            $validated['image_path'] = null;
         }
 
         $news->update($validated);

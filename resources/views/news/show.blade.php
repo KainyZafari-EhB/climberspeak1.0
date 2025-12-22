@@ -7,9 +7,8 @@
             </p>
         </header>
 
-        @if($news->image_path)
-            <img src="{{ $news->image_path }}" alt="{{ $news->title }}"
-                class="w-full rounded-lg mb-6 object-cover shadow-sm">
+        @if($news->image)
+            <img src="{{ $news->image }}" alt="{{ $news->title }}" class="w-full rounded-lg mb-6 object-cover shadow-sm">
         @endif
 
         <article class="prose prose-lg max-w-none text-slate-800 leading-relaxed">

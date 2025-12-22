@@ -18,9 +18,9 @@
 
                 <div class="mb-4">
                     <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-                    @if($news->image_path)
+                    @if($news->image)
                         <div class="mb-2">
-                            <img src="{{ $news->image_path }}" alt="Current Image" class="w-32 h-32 object-cover rounded">
+                            <img src="{{ $news->image }}" alt="Current Image" class="w-32 h-32 object-cover rounded">
                         </div>
                     @endif
                     <input type="file" name="image" id="image"

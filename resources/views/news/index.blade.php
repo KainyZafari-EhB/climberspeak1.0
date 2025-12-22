@@ -4,7 +4,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($news as $item)
             <div class="glass-climbing rounded-xl overflow-hidden hover:shadow-2xl transition">
-                <img src="{{ $item->image_path ?? 'https://via.placeholder.com/400x200' }}" alt="{{ $item->title }}"
+                <img src="{{ $item->image ?? 'https://via.placeholder.com/400x200' }}" alt="{{ $item->title }}"
                     class="w-full h-48 object-cover">
 
                 <div class="p-4">
